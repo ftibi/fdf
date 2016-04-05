@@ -6,11 +6,13 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 18:08:11 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/05 18:13:04 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/05 18:57:36 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "libft/includes/libft.h"
+#include "get_next_line.h"
+
 
 
