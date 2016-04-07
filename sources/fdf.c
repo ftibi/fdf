@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 14:13:12 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 16:16:32 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/07 16:40:37 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	map = read_map(av[1]);
+	print_map(map);
 	return (0);
 }

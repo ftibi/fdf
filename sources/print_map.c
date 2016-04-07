@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 15:44:50 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 16:16:20 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/07 16:24:56 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	print_map(t_map *map)
 {
 	t_map *start;
 
+	if (DEBUG)
+		ft_putendl("print_map");
 	start = map;
 	while (map)
 	{
