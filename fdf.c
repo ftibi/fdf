@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mymlx.h                                            :+:      :+:    :+:   */
+/*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/05 18:10:06 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/05 18:32:29 by tfolly           ###   ########.fr       */
+/*   Created: 2016/04/07 14:13:12 by tfolly            #+#    #+#             */
+/*   Updated: 2016/04/07 14:38:22 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MYMLX_H
-# define MYMLX_H
+#include "fdf.h"
 
-typedef struct			s_map
+int	main(int ac, char **av)
 {
-    s_map				right;
-    s_map				down;
-	int					x;
-	int					y;
-	int					z;
+	t_map	*map;
 
-}						t_map;
-
-
-#endif
+	if (!(map = (t_map*)ft_memalloc(sizeof(t_map))))
+			return (0);
+	if (ac == 1)
+		return (0);
+	map = read_map(av[1], map);
+	
+	return (0);
+}
