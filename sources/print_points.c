@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 17:07:04 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 18:02:05 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/07 18:06:05 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ static void	one_point(t_map *map, void *mlx, void *win, int a, int b)
 	if (DEBUG)
 		ft_putendl("one point");
 	if (map->z)
-		mlx_pixel_put(mlx, win, a + ((map->x - map->y) * 0.82 * 0.87) * zoom, b + ((map->x + map->y) * 0.82 * 0.5 + map->z * 0.82) * zoom, 0x00FFFF);
+		mlx_pixel_put(mlx, win, a + ((map->x - map->y) * 0.82 * 0.87) * zoom, b + ((map->x + map->y) * 0.82 * 0.5 - map->z * 0.82) * zoom, 0x00FFFF);
 	else
-		mlx_pixel_put(mlx, win, a + ((map->x - map->y) * 0.82 * 0.87) * zoom, b + ((map->x + map->y) * 0.82 * 0.5 + map->z * 0.82) * zoom, 0xFF0000);
+		mlx_pixel_put(mlx, win, a + ((map->x - map->y) * 0.82 * 0.87) * zoom, b + ((map->x + map->y) * 0.82 * 0.5 - map->z * 0.82) * zoom, 0xFF0000);
 }
 
 void	print_points(t_map *map)
