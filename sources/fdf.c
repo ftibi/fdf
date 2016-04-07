@@ -6,11 +6,11 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 14:13:12 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 14:38:22 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/07 15:56:29 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../includes/fdf.h"
 
 int	main(int ac, char **av)
 {
@@ -21,6 +21,5 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	map = read_map(av[1], map);
-	
 	return (0);
 }

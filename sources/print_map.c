@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/07 14:12:13 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 14:38:17 by tfolly           ###   ########.fr       */
+/*   Created: 2016/04/07 15:44:50 by tfolly            #+#    #+#             */
+/*   Updated: 2016/04/07 15:57:13 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
-# include "libft/includes/libft.h"
-# include "getnextline/get_next_line.h"
-# include <fcntl.h>
+#include "../includes/fdf.h"
 
-
-typedef struct			s_map
+void	print_map(t_map *map)
 {
-    struct s_map		*right;
-    struct s_map		*down;
-	int					x;
-	int					y;
-	int					z;
+	t_map *start;
 
-}						t_map;
-
-t_map					*read_map(char *av1, t_map *map);
-
-
-#endif
+	start = map;
+	while (map)
+	{
+		while (map)
+		{
+			ft_putnbr(map->z);
+			ft_putchar(' ');
+			map = map->right;
+		}
+		ft_putchar('\n');
+		map = start->down;
+		start = map;
+	}
+}

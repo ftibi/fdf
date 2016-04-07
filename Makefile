@@ -39,12 +39,17 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re, test
+.PHONY: all, clean, fclean, re, test, print
 
 norme:
 	norminette $(SRC)
 
 test: $(LIB) 
 	rm -fv test
-	$(CC) -o test $(NAME) main.c $(CPPFLAGS) $(MLXFLAGS) libft.a
+	$(CC) -o test  main.c $(CPPFLAGS) $(MLXFLAGS) libft.a
 	./test
+
+print: $(LIB)
+	rm -fv print
+	$(CC) -o print  $(SRC) $(CPPFLAGS) $(MLXFLAGS) libft.a
+	./print
