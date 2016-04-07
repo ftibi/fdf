@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   print_lines.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/07 14:13:12 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 18:13:25 by tfolly           ###   ########.fr       */
+/*   Created: 2016/04/07 18:12:20 by tfolly            #+#    #+#             */
+/*   Updated: 2016/04/07 18:13:06 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int	main(int ac, char **av)
+void	print_lines(t_map *map)
 {
-	t_map	*map;
-
-	if (ac == 1)
-		return (0);
-	map = read_map(av[1]);
-	print_points(map);
-	print_lines(map);
-	return (0);
+	map = 0;
 }

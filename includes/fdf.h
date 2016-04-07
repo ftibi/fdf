@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 14:12:13 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 17:31:01 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/07 18:11:17 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ typedef struct			s_map
 t_map					*read_map(char *av1);
 void					print_map(t_map *map);
 void					print_points(t_map *map);
+void					print_lines(t_map *map);
 #endif
