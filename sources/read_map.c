@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 18:08:11 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 16:06:24 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/07 16:16:18 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,16 @@ static t_map	*fill_line(char *line)
 
 static int		link_prev(t_map *prev_line, t_map *chain_line)
 {
-
+	while (prev_line && chain_line)
+	{
+		prev_line->down = chain_line;
+		prev_line = prev_line->right;
+		chain_line = chain_line->right;
+	}
 	return (0);
 }
 
-t_map			*read_map(char *av1, t_map *map)
+t_map			*read_map(char *av1)
 {
 	int 	lec;
 	char	*line;

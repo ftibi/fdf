@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tfolly <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/07 14:12:13 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 16:20:09 by tfolly           ###   ########.fr       */
+/*   Created: 2016/01/08 13:53:54 by tfolly            #+#    #+#             */
+/*   Updated: 2016/04/07 16:20:20 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 2
 # include "../libft/includes/libft.h"
-# include "get_next_line.h"
-# include <fcntl.h>
-# include "mlx.h"
 
-typedef struct			s_map
+int						get_next_line(int const fd, char **line);
+
+typedef struct			s_stock
 {
-    struct s_map		*right;
-    struct s_map		*down;
-	int					x;
-	int					y;
-	int					z;
+	char				*str;
+	int					fd;
+	int					status;
+	struct s_stock		*next;
+}						t_stock;
 
-}						t_map;
-
-t_map					*read_map(char *av1);
-void					print_map(t_map *map);
 #endif

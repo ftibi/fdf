@@ -2,7 +2,7 @@ NAME = fdf
 
 SRC_PATH = ./sources
 
-SRC_NAME = fdf.c read_map.c 
+SRC_NAME = fdf.c read_map.c	print_map.c get_next_line.c 
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
@@ -25,6 +25,8 @@ $(LIB):
 	cp $(LIB) libft.a
 
 $(NAME): $(OBJ) $(LIB)
+	$(CC) -o $(NAME) $(OBJ) $(CPPFLAGS) $(MLXFLAGS) libft.a
+	
 
 $(SRC_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ -c $<
