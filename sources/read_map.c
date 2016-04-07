@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 18:08:11 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 15:57:33 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/07 16:06:24 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,22 @@ static t_map	*fill_line(char *line)
 	return (start);
 }
 
+static int		link_prev(t_map *prev_line, t_map *chain_line)
+{
+
+	return (0);
+}
+
 t_map			*read_map(char *av1, t_map *map)
 {
 	int 	lec;
 	char	*line;
 	int		fd;
 	t_map	*chain_line;
+	t_map	*prev_line;
 
 	chain_line = NULL;
+	prev_line = NULL;
 	lec = 1;
 	line = NULL;
 	if ((fd = open(av1, O_RDONLY)) == -1)
@@ -67,6 +75,12 @@ t_map			*read_map(char *av1, t_map *map)
 	while (lec)
 	{
 		lec = get_next_line(fd, &line);
+		chain_line = fill_line(line);
+		if (prev_line)
+		{
+			link_prev(prev_line, chain_line);
+			prev_line = chain_line;
+		}
 	}
 	return (0);
 }
