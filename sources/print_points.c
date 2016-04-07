@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 17:07:04 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 18:06:05 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/07 18:56:16 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,40 @@ static void	one_point(t_map *map, void *mlx, void *win, int a, int b)
 		mlx_pixel_put(mlx, win, a + ((map->x - map->y) * 0.82 * 0.87) * zoom, b + ((map->x + map->y) * 0.82 * 0.5 - map->z * 0.82) * zoom, 0xFF0000);
 }
 
+static void one_line(t_map *map, void *mlx, void *win, int a, int b)
+{
+	int zoom = 15;
+	float x;
+	float y;
+	float z;
+	//float cof;
+
+
+	y = map->y;
+	if (map->right)
+	{
+		x = map->x;
+		z = map->z;
+		while (x < map->right->x)
+		{
+			mlx_pixel_put(mlx, win, a + ((x - map->y) * 0.82 * 0.87) * zoom, b + ((x + map->y) * 0.82 * 0.5 - z * 0.82) * zoom, 0x00FF00);
+			x = x + 0.01;
+			z = z + 0.01 * (map->right->z - map->z);
+		}
+	}
+	if (map->down)
+	{
+		y = map->y;
+		z = map->z;
+		while (y < map->down->y)
+		{
+			mlx_pixel_put(mlx, win, a + ((map->x - y) * 0.82 * 0.87) * zoom, b + ((map->x + y) * 0.82 * 0.5 - z * 0.82) * zoom, 0x00FF00);
+			y = y + 0.01;
+			z = z + 0.01 * (map->down->z - map->z);
+		}
+	}
+}
+
 void	print_points(t_map *map)
 {
 	void	*mlx;
@@ -60,6 +94,7 @@ void	print_points(t_map *map)
 	start = map;
 	while (map)
 	{
+		one_line(map, mlx, win, a, b);
 		one_point(map, mlx, win, a, b);
 		map = map->right;
 		if (!map && start->down)

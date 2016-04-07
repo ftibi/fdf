@@ -6,13 +6,15 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 18:12:20 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 18:13:06 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/07 18:20:51 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void	print_lines(t_map *map)
+void	print_lines(t_map *map, void *mlx, void *win)
 {
+	mlx = 0;
+	win = 0;
 	map = 0;
 }
