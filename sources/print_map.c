@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 15:44:50 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 16:24:56 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/07 17:00:43 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	print_map(t_map *map)
 		while (map)
 		{
 			ft_putnbr(map->z);
+			//ft_putnbr(map->x);
+			//ft_putnbr(map->y);
 			ft_putchar(' ');
 			map = map->right;
 		}

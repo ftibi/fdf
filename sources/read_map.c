@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 18:08:11 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 16:44:24 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/07 16:58:12 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static t_map	*fill_line(char *line)
 		}
 		else
 		{
-			tmp->right = new_point(0, 0, ft_atoi(*split_line));
+			tmp->right = new_point(tmp->x + 1, 0, ft_atoi(*split_line));
 			tmp = tmp->right;
 		}
 		split_line++;
@@ -63,6 +63,7 @@ static int		link_prev(t_map *prev_line, t_map *chain_line)
 	while (prev_line && chain_line)
 	{
 		prev_line->down = chain_line;
+		chain_line->y = prev_line->y + 1;
 		prev_line = prev_line->right;
 		chain_line = chain_line->right;
 	}
