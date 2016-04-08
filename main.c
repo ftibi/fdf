@@ -1,50 +1,98 @@
 #include "mlx.h"
 #include "libft/includes/libft.h"
 
-int my_key_funct(int keycode, void *param)
+typedef struct s_data
 {
-    ft_putstr("key event :");
-    ft_putnbr(keycode);
-    ft_putchar('\n');
-    if (keycode == 53)
-    {
-        ft_putendl("exit");
-        exit(0);
-    }
-    return (0);
-}
-
-int main()
-{
-    void *mlx;
-    void *win;
-    int x;
-    int y;
+	void *mlx;
+	void *win;
+	int x;
+	int y;
 	int a;
 	int b;
 	int dist;
+	int zoom;
+}				t_data;
 
+void aff(t_data *data)
+{
+	data->y = 0;
+	while (data->y <= 400)
+	{
+		data->x = 0;
+		while (data->x <= 400)
+		{
+			data->dist =  (data->x - data->a) * (data->x - data->a) + (data->y - data->b) * (data->y - data->b);
+			if ( data->dist == data->zoom * (50 * 50))
+				mlx_pixel_put(data->mlx, data->win, data->x, data->y, 0xFFFFFF);
+			data->x++;
+		}
+		data->y++;
+	}
+}
+
+int	expose_hook(void *data)
+{
+	return (0);
+}
+
+int my_key_funct(int keycode, t_data *data)
+{
+	ft_putstr("key event : ");
+	ft_putnbr(keycode);
+	ft_putchar('\n');
+	if (keycode == 53)
+	{
+		ft_putendl("exit");
+		exit(0);
+	}
+	if (keycode == 35)
+	{
+		ft_putendl("zoom");
+		(data->zoom)++;
+		ft_putnbr(data->zoom);
+		ft_putendl("");
+		mlx_expose_hook(data->win, expose_hook , data);
+		aff(data);
+	}
+	return (0);
+}
+
+
+
+int main()
+{
+	void *mlx;
+	void *win;
+	int x;
+	int y;
+	int a;
+	int b;
+	int dist;
+	int zoom;
+	t_data *data;
+
+	data = (t_data*)ft_memalloc(sizeof(t_data));
 	a = 200;
 	b = 200;
+	ft_putendl("X");
+	zoom = 1;
+	ft_putendl("Z");
 
-    mlx = mlx_init();
-    win = mlx_new_window(mlx, 400, 400, "mlx 42");
-    
+	mlx = mlx_init();
+	win = mlx_new_window(mlx, 400, 400, "mlx 42");
+
 	mlx_pixel_put(mlx, win, a, b, 0xFFFFFF);
-    y = 0;
-    while (y <= 400)
-    {
-    	x = 0;
-		while (x <= 400)
-		{
-			dist = (x - a) * (x - a) + (y - b) * (y - b);
-			if ( dist <= (50 * 50))
-				mlx_pixel_put(mlx, win, x, y, 0xFFFFFF);
-			x++;
-		}
-		y++;
-    }
-    mlx_key_hook(win, my_key_funct, 0);
-    mlx_loop(mlx);
-    return (0);
+
+	data->x = x;
+	data->y = y;
+	data->a = a;
+	data->b = b;
+	data->win  = win;
+	data->mlx  = mlx;
+	data->zoom  = zoom;
+	data->dist  = dist;
+	aff(data);
+	mlx_key_hook(win, my_key_funct, data);
+	mlx_loop(mlx);
+	return (0);
 }
