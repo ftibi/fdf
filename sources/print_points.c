@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 17:07:04 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/08 17:30:49 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/08 17:48:04 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,34 @@ static int my_key_funct(int keycode, t_map *map)
 		ft_putendl("");
 		mlx_clear_window(map->mlx, map->win);
 		map = map_init(map, map->mlx, map->win, map->a, map->b);
+		aff(map);
+	}
+	if (keycode == 123)
+	{
+		ft_putendl("left");
+		mlx_clear_window(map->mlx, map->win);
+		map = map_init(map, map->mlx, map->win, map->a - 10, map->b);
+		aff(map);
+	}
+	if (keycode == 124)
+	{
+		ft_putendl("right");
+		mlx_clear_window(map->mlx, map->win);
+		map = map_init(map, map->mlx, map->win, map->a + 10, map->b);
+		aff(map);
+	}
+	if (keycode == 125)
+	{
+		ft_putendl("down");
+		mlx_clear_window(map->mlx, map->win);
+		map = map_init(map, map->mlx, map->win, map->a, map->b + 10);
+		aff(map);
+	}
+	if (keycode == 126)
+	{
+		ft_putendl("up");
+		mlx_clear_window(map->mlx, map->win);
+		map = map_init(map, map->mlx, map->win, map->a, map->b - 10);
 		aff(map);
 	}
 	return (0);
@@ -153,7 +181,6 @@ void	print_points(t_map *map, int size)
 		ft_putendl("print points");
 	map->a = size / 2.5;
 	map->b = size / 3;
-
 
 	map->mlx = mlx_init();
 	map->win = mlx_new_window(map->mlx, size, size, "mlx 42");
