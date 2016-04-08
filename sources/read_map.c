@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 18:08:11 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/07 16:58:12 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/08 11:47:28 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static t_map	*fill_line(char *line)
 	t_map	*start;
 	t_map	*tmp;
 	char	**split_line;
+	int		var;
 
 	if (DEBUG)
 		ft_putendl("fill_line");
@@ -48,7 +49,10 @@ static t_map	*fill_line(char *line)
 		}
 		else
 		{
-			tmp->right = new_point(tmp->x + 1, 0, ft_atoi(*split_line));
+			var = ft_atoi(*split_line);
+			tmp->right = new_point(tmp->x + 1, 0, var);
+			if (abs(var) > start->zmax)
+				start->zmax = abs(var);
 			tmp = tmp->right;
 		}
 		split_line++;
