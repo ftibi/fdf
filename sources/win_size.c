@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 11:01:12 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/08 12:06:31 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/08 17:30:10 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ int	win_size(t_map *map)
 	size = 0;
 	size = (xmax > ymax) ? xmax : ymax;
 	size = (size > zmax) ? size : zmax;
-	return (30 * size);
+	return ((30 * size) > 2000 ? 2000 : 30 * size);
 }

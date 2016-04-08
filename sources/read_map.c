@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 18:08:11 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/08 16:48:16 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/08 17:28:15 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_map	*new_point(int x, int y, int z)
 	new_pt->x = x;
 	new_pt->y = y;
 	new_pt->z = z;
-	new_pt->zoom = 15;
+	new_pt->zoom = 10;
 	new_pt->ratio = 1;
 	new_pt->mlx = NULL;
 	new_pt->win = NULL;
