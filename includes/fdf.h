@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 14:12:13 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/08 12:05:54 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/08 16:47:44 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,18 @@
 
 typedef struct			s_map
 {
-    struct s_map		*right;
-    struct s_map		*down;
+	struct s_map		*right;
+	struct s_map		*down;
+	int					a;
+	int					b;
 	int					x;
 	int					y;
 	int					z;
 	int					zmax;
+	int					zoom;
+	float				ratio;
+	void				*mlx;
+	void				*win;
 }						t_map;
 
 t_map					*read_map(char *av1);

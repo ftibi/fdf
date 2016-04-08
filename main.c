@@ -12,7 +12,7 @@ typedef struct s_data
 	int dist;
 	int zoom;
 }				t_data;
-
+//utiliser mlx_clear_window a la place OMFG
 void aff(t_data *data)
 {
 	data->y = 0;
@@ -30,7 +30,7 @@ void aff(t_data *data)
 	}
 }
 
-int	expose_hook(void *data)
+int	expose_hook(t_data *data)
 {
 	return (0);
 }
@@ -51,13 +51,11 @@ int my_key_funct(int keycode, t_data *data)
 		(data->zoom)++;
 		ft_putnbr(data->zoom);
 		ft_putendl("");
-		mlx_expose_hook(data->win, expose_hook , data);
+		mlx_put_image_to_window(data->mlx, data->win, mlx_new_image(data->mlx, 400, 400), 0 ,0);
 		aff(data);
 	}
 	return (0);
 }
-
-
 
 int main()
 {

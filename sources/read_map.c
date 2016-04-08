@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 18:08:11 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/08 14:04:46 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/08 16:48:16 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,15 @@ static t_map	*new_point(int x, int y, int z)
 		return (0);
 	new_pt->right = NULL;
 	new_pt->down = NULL;
+	new_pt->a = 0;
+	new_pt->b = 0;
 	new_pt->x = x;
 	new_pt->y = y;
 	new_pt->z = z;
+	new_pt->zoom = 15;
+	new_pt->ratio = 1;
+	new_pt->mlx = NULL;
+	new_pt->win = NULL;
 	return (new_pt);
 }
 
