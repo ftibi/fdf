@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 17:07:04 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/08 12:20:01 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/08 14:08:22 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,10 @@ static void one_line(t_map *map, void *mlx, void *win, int a, int b)
 	float y;
 	float z;
 
-	x = map->x;
-	y = map->y;
-	z = map->z;
 	if (map->right)
 	{
+		x = map->x;
+		z = map->z;
 		while (x < map->right->x)
 		{
 			mlx_pixel_put(mlx, win, a + ((x - map->y) * 0.82 * 0.87) * zoom, b + ((x + map->y) * 0.82 * 0.5 - z * 0.82) * zoom, 0x00FF00);
@@ -62,6 +61,8 @@ static void one_line(t_map *map, void *mlx, void *win, int a, int b)
 	}
 	if (map->down)
 	{
+		y = map->y;
+		z = map->z;
 		while (y < map->down->y)
 		{
 			mlx_pixel_put(mlx, win, a + ((map->x - y) * 0.82 * 0.87) * zoom, b + ((map->x + y) * 0.82 * 0.5 - z * 0.82) * zoom, 0x00FF00);
