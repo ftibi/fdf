@@ -6,13 +6,13 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 17:07:04 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/09 14:35:27 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/09 14:59:46 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int my_key_funct(int keycode, t_map *map)
+int				my_key_funct(int keycode, t_map *map)
 {
 	if (keycode == 53)
 	{
@@ -21,62 +21,25 @@ int my_key_funct(int keycode, t_map *map)
 	}
 	if (keycode == 35)
 	{
-		ft_putendl("zoom");
 		map->zoom++;
 		ft_putnbr(map->zoom);
 		ft_putendl("");
 		mlx_clear_window(map->mlx, map->win);
-		//		map = map_init(map);
 		aff(map);
 	}
 	if (keycode == 33)
 	{
-		ft_putendl("zoom");
 		if (map->zoom > 1)
 			map->zoom--;
-		ft_putnbr(map->zoom);
-		ft_putendl("");
 		mlx_clear_window(map->mlx, map->win);
-		map = map_init(map, map->mlx, map->win, map->a, map->b);
-		//		map = map_init(map);
+		map = map_init(map, map->a, map->b, map->zoom);
 		aff(map);
 	}
-	if (keycode == 123)
-	{
-		ft_putendl("left");
-		mlx_clear_window(map->mlx, map->win);
-		map = map_init(map, map->mlx, map->win, map->a - 10, map->b);
-		//		map = map_init(map);
-		aff(map);
-	}
-	if (keycode == 124)
-	{
-		ft_putendl("right");
-		mlx_clear_window(map->mlx, map->win);
-		map = map_init(map, map->mlx, map->win, map->a + 10, map->b);
-		//		map = map_init(map);
-		aff(map);
-	}
-	if (keycode == 125)
-	{
-		ft_putendl("down");
-		mlx_clear_window(map->mlx, map->win);
-		map = map_init(map, map->mlx, map->win, map->a, map->b + 10);
-		//		map = map_init(map);
-		aff(map);
-	}
-	if (keycode == 126)
-	{
-		ft_putendl("up");
-		mlx_clear_window(map->mlx, map->win);
-		map = map_init(map, map->mlx, map->win, map->a, map->b - 10);
-		//		map = map_init(map);
-		aff(map);
-	}
+	keyfct(keycode, map);
 	return (0);
 }
 
-static void	one_line2(t_map *map)
+static void		one_line2(t_map *map)
 {
 	int		zoom;
 	float	y;
@@ -98,7 +61,7 @@ static void	one_line2(t_map *map)
 	}
 }
 
-void	one_line(t_map *map)
+void			one_line(t_map *map)
 {
 	int		zoom;
 	float	x;
@@ -121,13 +84,15 @@ void	one_line(t_map *map)
 	one_line2(map);
 }
 
-t_map	*map_init(t_map *map, void *mlx, void *win, int a, int b)
+t_map			*map_init(t_map *map, int a, int b, int zoom)
 {
-	int		zoom;
+	void	*mlx;
+	void	*win;
 	t_map	*start;
 	t_map	*vstart;
 
-	zoom = map->zoom;
+	mlx = map->mlx;
+	win = map->win;
 	start = map;
 	vstart = map;
 	while (map)
@@ -148,13 +113,13 @@ t_map	*map_init(t_map *map, void *mlx, void *win, int a, int b)
 	return (vstart);
 }
 
-void	print_points(t_map *map, int size)
+void			print_points(t_map *map, int size)
 {
 	map->a = size / 2.5;
 	map->b = size / 3;
 	map->mlx = mlx_init();
 	map->win = mlx_new_window(map->mlx, size, size, "mlx 42");
-	map = map_init(map, map->mlx, map->win, map->a, map->b);
+	map = map_init(map, map->a, map->b, map->zoom);
 	aff(map);
 	mlx_pixel_put(map->mlx, map->win, map->a, map->b, 0xFFFFFF);
 	mlx_key_hook(map->win, my_key_funct, map);

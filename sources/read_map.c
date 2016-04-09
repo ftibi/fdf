@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 18:08:11 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/09 14:16:27 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/09 14:41:55 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,15 @@ static t_map	*fill_line(char *line)
 	int		var;
 
 	split_line = ft_strsplit(line, ' ');
-	start = NULL;
-	tmp = NULL;
+	start = new_point(0, 0, ft_atoi(*split_line));
+	tmp = start;
 	while (split_line && *split_line)
 	{
-		if (!start)
-		{
-			start = new_point(0, 0, ft_atoi(*split_line));
-			tmp = start;
-		}
-		else
-		{
-			var = ft_atoi(*split_line);
-			tmp->right = new_point(tmp->x + 1, 0, var);
-			if (abs(var) > start->zmax)
-				start->zmax = abs(var);
-			tmp = tmp->right;
-		}
+		var = ft_atoi(*split_line);
+		tmp->right = new_point(tmp->x + 1, 0, var);
+		if (abs(var) > start->zmax)
+			start->zmax = abs(var);
+		tmp = tmp->right;
 		split_line++;
 	}
 	return (start);
