@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 14:12:13 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/08 16:47:44 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/09 14:05:41 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct			s_map
 	void				*win;
 }						t_map;
 
+t_map 					*map_init(t_map *map, void *mlx, void *win, int a, int b);
+void 					aff(t_map *map);
 t_map					*read_map(char *av1);
 void					print_map(t_map *map);
 void					print_points(t_map *map, int size);

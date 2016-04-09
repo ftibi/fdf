@@ -6,22 +6,29 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 11:01:12 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/08 17:30:10 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/09 14:11:08 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int	win_size(t_map *map)
+static int	ret_size(int xmax, int ymax, int zmax)
+{
+	int	size;
+
+	size = 0;
+	size = (xmax > ymax) ? xmax : ymax;
+	size = (size > zmax) ? size : zmax;
+	return ((30 * size) > 2000 ? 2000 : 30 * size);
+}
+
+int			win_size(t_map *map)
 {
 	int		xmax;
 	int		ymax;
 	int		zmax;
 	t_map	*tmp;
-	int		size;
 
-	if (DEBUG)
-		ft_putendl("win_size");
 	xmax = 0;
 	ymax = 0;
 	zmax = 0;
@@ -39,8 +46,5 @@ int	win_size(t_map *map)
 			zmax = tmp->z;
 		ymax++;
 	}
-	size = 0;
-	size = (xmax > ymax) ? xmax : ymax;
-	size = (size > zmax) ? size : zmax;
-	return ((30 * size) > 2000 ? 2000 : 30 * size);
+	return (ret_size(xmax, ymax, zmax));
 }
