@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 17:07:04 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/09 14:17:15 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/09 14:35:27 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int my_key_funct(int keycode, t_map *map)
 		ft_putnbr(map->zoom);
 		ft_putendl("");
 		mlx_clear_window(map->mlx, map->win);
-		map = map_init(map, map->mlx, map->win, map->a, map->b);
+		//		map = map_init(map);
 		aff(map);
 	}
 	if (keycode == 33)
@@ -38,6 +38,7 @@ int my_key_funct(int keycode, t_map *map)
 		ft_putendl("");
 		mlx_clear_window(map->mlx, map->win);
 		map = map_init(map, map->mlx, map->win, map->a, map->b);
+		//		map = map_init(map);
 		aff(map);
 	}
 	if (keycode == 123)
@@ -45,6 +46,7 @@ int my_key_funct(int keycode, t_map *map)
 		ft_putendl("left");
 		mlx_clear_window(map->mlx, map->win);
 		map = map_init(map, map->mlx, map->win, map->a - 10, map->b);
+		//		map = map_init(map);
 		aff(map);
 	}
 	if (keycode == 124)
@@ -52,6 +54,7 @@ int my_key_funct(int keycode, t_map *map)
 		ft_putendl("right");
 		mlx_clear_window(map->mlx, map->win);
 		map = map_init(map, map->mlx, map->win, map->a + 10, map->b);
+		//		map = map_init(map);
 		aff(map);
 	}
 	if (keycode == 125)
@@ -59,6 +62,7 @@ int my_key_funct(int keycode, t_map *map)
 		ft_putendl("down");
 		mlx_clear_window(map->mlx, map->win);
 		map = map_init(map, map->mlx, map->win, map->a, map->b + 10);
+		//		map = map_init(map);
 		aff(map);
 	}
 	if (keycode == 126)
@@ -66,17 +70,39 @@ int my_key_funct(int keycode, t_map *map)
 		ft_putendl("up");
 		mlx_clear_window(map->mlx, map->win);
 		map = map_init(map, map->mlx, map->win, map->a, map->b - 10);
+		//		map = map_init(map);
 		aff(map);
 	}
 	return (0);
 }
 
-static void	one_line(t_map *map, void *mlx, void *win, int a, int b)
+static void	one_line2(t_map *map)
 {
-	int zoom;
-	float x;
-	float y;
-	float z;
+	int		zoom;
+	float	y;
+	float	z;
+
+	zoom = map->zoom;
+	if (map->down)
+	{
+		y = map->y;
+		z = map->z;
+		while (y <= map->down->y)
+		{
+			mlx_pixel_put(map->mlx, map->win, map->a + ((map->x - y)
+						* 0.82 * 0.87) * zoom, map->b + ((map->x + y)
+							* 0.82 * 0.5 - z * 0.82) * zoom, 0x00FF00);
+			y = y + 0.01;
+			z = z + 0.01 * (map->down->z - map->z);
+		}
+	}
+}
+
+void	one_line(t_map *map)
+{
+	int		zoom;
+	float	x;
+	float	z;
 
 	zoom = map->zoom;
 	if (map->right)
@@ -85,41 +111,14 @@ static void	one_line(t_map *map, void *mlx, void *win, int a, int b)
 		z = map->z;
 		while (x <= map->right->x)
 		{
-			mlx_pixel_put(mlx, win, a + ((x - map->y) * 0.82 * 0.87) * zoom, b + ((x + map->y) * 0.82 * 0.5 - z * 0.82) * zoom, 0x00FF00);
+			mlx_pixel_put(map->mlx, map->win, map->a + ((x - map->y)
+						* 0.82 * 0.87) * zoom, map->b + ((x + map->y)
+							* 0.82 * 0.5 - z * 0.82) * zoom, 0x00FF00);
 			x = x + 0.01;
 			z = z + 0.01 * (map->right->z - map->z);
 		}
 	}
-	if (map->down)
-	{
-		y = map->y;
-		z = map->z;
-		while (y <= map->down->y)
-		{
-			mlx_pixel_put(mlx, win, a + ((map->x - y) * 0.82 * 0.87) * zoom, b + ((map->x + y) * 0.82 * 0.5 - z * 0.82) * zoom, 0x00FF00);
-			y = y + 0.01;
-			z = z + 0.01 * (map->down->z - map->z);
-		}
-	}
-}
-
-void aff(t_map *map)
-{
-	t_map *start;
-
-	if (DEBUG)
-		ft_putendl("aff");
-	start = map;
-	while (map)
-	{
-		one_line(map, map->mlx, map->win, map->a, map->b);
-		map = map->right;
-		if (!map && start->down)
-		{
-			map = start->down;
-			start = map;
-		}
-	}
+	one_line2(map);
 }
 
 t_map	*map_init(t_map *map, void *mlx, void *win, int a, int b)
@@ -127,7 +126,7 @@ t_map	*map_init(t_map *map, void *mlx, void *win, int a, int b)
 	int		zoom;
 	t_map	*start;
 	t_map	*vstart;
-	
+
 	zoom = map->zoom;
 	start = map;
 	vstart = map;

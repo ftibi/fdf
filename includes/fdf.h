@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 14:12:13 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/09 14:05:41 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/09 14:35:12 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ t_map					*read_map(char *av1);
 void					print_map(t_map *map);
 void					print_points(t_map *map, int size);
 int						win_size(t_map *map);
+void					one_line(t_map *map);
 #endif
