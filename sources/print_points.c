@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 17:07:04 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/09 14:59:46 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/12 11:42:51 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void			print_points(t_map *map, int size)
 	map->a = size / 2.5;
 	map->b = size / 3;
 	map->mlx = mlx_init();
-	map->win = mlx_new_window(map->mlx, size, size, "mlx 42");
+	map->win = mlx_new_window(map->mlx, size, size, "fdf");
 	map = map_init(map, map->a, map->b, map->zoom);
 	aff(map);
 	mlx_pixel_put(map->mlx, map->win, map->a, map->b, 0xFFFFFF);
