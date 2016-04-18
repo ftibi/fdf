@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 17:07:04 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/18 12:15:59 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/18 12:31:39 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ int				my_key_funct(int keycode, t_map *map)
 	}
 	if (keycode == 35)
 	{
-		map->zoom++;
+		(map->zoom)++;
 		ft_putnbr(map->zoom);
 		ft_putendl("");
 		mlx_clear_window(map->mlx, map->win);
+		map = map_init(map, map->a, map->b, map->zoom);
 		aff(map);
 	}
 	if (keycode == 33)
