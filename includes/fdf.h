@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 14:12:13 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/09 15:17:29 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/18 11:57:13 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@ void					print_points(t_map *map, int size);
 int						win_size(t_map *map);
 void					one_line(t_map *map);
 void					keyfct(int keycode, t_map *map);
+t_map					*mapzmax(t_map *map);
 #endif

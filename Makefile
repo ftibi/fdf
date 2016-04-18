@@ -3,7 +3,7 @@ NAME = fdf
 SRC_PATH = ./sources
 
 SRC_NAME = fdf.c read_map.c	print_map.c get_next_line.c print_points.c win_size.c\
-		   aff.c keyfct.c
+		   aff.c keyfct.c zmax.c
 
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 

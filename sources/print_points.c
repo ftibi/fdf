@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 17:07:04 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/12 11:42:51 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/18 12:15:59 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static void		one_line2(t_map *map)
 		{
 			mlx_pixel_put(map->mlx, map->win, map->a + ((map->x - y)
 						* 0.82 * 0.87) * zoom, map->b + ((map->x + y)
-							* 0.82 * 0.5 - z * 0.82) * zoom, 0x00FF00);
+							* 0.82 * 0.5 - z * 0.82) * zoom, 100 +
+								155 * z / map->zmax);
 			y = y + 0.01;
 			z = z + 0.01 * (map->down->z - map->z);
 		}
@@ -76,7 +77,8 @@ void			one_line(t_map *map)
 		{
 			mlx_pixel_put(map->mlx, map->win, map->a + ((x - map->y)
 						* 0.82 * 0.87) * zoom, map->b + ((x + map->y)
-							* 0.82 * 0.5 - z * 0.82) * zoom, 0x00FF00);
+							* 0.82 * 0.5 - z * 0.82) * zoom, 100
+								+ 155 * z / map->zmax);
 			x = x + 0.01;
 			z = z + 0.01 * (map->right->z - map->z);
 		}
@@ -121,7 +123,6 @@ void			print_points(t_map *map, int size)
 	map->win = mlx_new_window(map->mlx, size, size, "fdf");
 	map = map_init(map, map->a, map->b, map->zoom);
 	aff(map);
-	mlx_pixel_put(map->mlx, map->win, map->a, map->b, 0xFFFFFF);
 	mlx_key_hook(map->win, my_key_funct, map);
 	mlx_loop(map->mlx);
 }
