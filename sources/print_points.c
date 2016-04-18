@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 17:07:04 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/18 12:31:39 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/18 12:41:50 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ static void		one_line2(t_map *map)
 		{
 			mlx_pixel_put(map->mlx, map->win, map->a + ((map->x - y)
 						* 0.82 * 0.87) * zoom, map->b + ((map->x + y)
-							* 0.82 * 0.5 - z * 0.82) * zoom, 100 +
-								155 * z / map->zmax);
+							* 0.82 * 0.5 - z * 0.82) * zoom, 150 +
+								105 * ft_abs(z / map->zmax));
 			y = y + 0.01;
 			z = z + 0.01 * (map->down->z - map->z);
 		}
@@ -78,8 +78,8 @@ void			one_line(t_map *map)
 		{
 			mlx_pixel_put(map->mlx, map->win, map->a + ((x - map->y)
 						* 0.82 * 0.87) * zoom, map->b + ((x + map->y)
-							* 0.82 * 0.5 - z * 0.82) * zoom, 100
-								+ 155 * z / map->zmax);
+							* 0.82 * 0.5 - z * 0.82) * zoom, 150
+								+ 105 * ft_abs(z / map->zmax));
 			x = x + 0.01;
 			z = z + 0.01 * (map->right->z - map->z);
 		}
