@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 18:08:11 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/18 13:02:58 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/18 15:06:34 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_map			*read_map(char *av1)
 	line = NULL;
 	if ((fd = open(av1, O_RDONLY)) == -1)
 		exit(0);
-	while (get_next_line(fd, &line))
+	while (get_next_line(fd, &line) > 0)
 	{
 		chain_line = fill_line(line);
 		if (!start)
