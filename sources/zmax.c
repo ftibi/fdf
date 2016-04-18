@@ -6,13 +6,13 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 11:46:09 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/18 12:39:50 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/18 12:43:39 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int		ft_abs(int a)
+int				ft_abs(int a)
 {
 	if (a < 0)
 		return (-a);
