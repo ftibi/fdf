@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 18:08:11 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/09 14:41:55 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/18 13:02:58 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static t_map	*fill_line(char *line)
 	{
 		var = ft_atoi(*split_line);
 		tmp->right = new_point(tmp->x + 1, 0, var);
-		if (abs(var) > start->zmax)
-			start->zmax = abs(var);
+		if (ft_abs(var) > start->zmax)
+			start->zmax = ft_abs(var);
 		tmp = tmp->right;
 		split_line++;
 	}

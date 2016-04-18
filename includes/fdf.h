@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 14:12:13 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/18 12:39:42 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/18 13:03:28 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 # include "../libft/includes/libft.h"
 # include "get_next_line.h"
 # include <fcntl.h>
-# include <math.h>
 # include "mlx.h"
-# define DEBUG  1
 
 typedef struct			s_map
 {
