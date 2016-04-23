@@ -6,7 +6,7 @@
 /*   By: tfolly <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 16:56:57 by tfolly            #+#    #+#             */
-/*   Updated: 2015/12/10 15:18:14 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/23 17:37:39 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int		len_word(char const *s, char c)
 	int len;
 
 	len = 0;
-	while (*s != c)
+	while (*s && *s != c)
 	{
 		s++;
 		len++;
@@ -69,15 +69,13 @@ char			**ft_strsplit(char const *s, char c)
 		return (NULL);
 	s = next_word(s, c);
 	nb = nbr_words(s, c);
-	resp = malloc(sizeof(char*) * nb + 1);
-	if (!resp)
-	{
+	if (!(resp = malloc(sizeof(char*) * nb + 1)))
 		return (NULL);
-	}
 	i = 0;
 	while (i < nb)
 	{
-		resp[i] = (char *)malloc(sizeof(char) * len_word(s, c) + 1);
+		if (!(resp[i] = (char *)malloc(sizeof(char) * len_word(s, c) + 1)))
+			return (0);
 		resp[i] = ft_memcpy(resp[i], s, len_word(s, c));
 		resp[i][len_word(s, c)] = '\0';
 		s = s + len_word(s, c);
