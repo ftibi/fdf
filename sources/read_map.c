@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/05 18:08:11 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/23 17:37:57 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/23 20:44:38 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static t_map	*fill_line(char *line)
 		tmp = tmp->right;
 		split_line++;
 	}
+	if (start->right)
+		start = start->right;
 	return (start);
 }
 
