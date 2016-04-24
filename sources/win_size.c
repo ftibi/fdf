@@ -6,7 +6,7 @@
 /*   By: tfolly <tfolly@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/08 11:01:12 by tfolly            #+#    #+#             */
-/*   Updated: 2016/04/09 14:11:08 by tfolly           ###   ########.fr       */
+/*   Updated: 2016/04/24 18:34:17 by tfolly           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ static int	ret_size(int xmax, int ymax, int zmax)
 	size = 0;
 	size = (xmax > ymax) ? xmax : ymax;
 	size = (size > zmax) ? size : zmax;
-	return ((30 * size) > 2000 ? 2000 : 30 * size);
+	size = ((30 * size) > 2000) ? 2000 : 30 * size;
+	size = size < 100 ? 100 : size;
+	return (size);
 }
 
 int			win_size(t_map *map)
